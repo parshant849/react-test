@@ -1,22 +1,13 @@
-const express = require('express');
-const app = express();
-const fs = require('fs');
+var express = require('express')
+var app = express()
 
-app.get('/users', (req, res) => {
-    
-    res.send('I will give you users');
-})
-app.get('*', (req, res) => {
-    console.log(req.headers.host);
-    req.headers.host = '127.0.0.0.1:3001'
-    // if(req.hostname === 'localhost') {
-    //     res.redirect('http://127.0.0.1:3001');
-    //     return;
-    // };
-    res.send('Helo');
+app.set('port', (process.env.PORT || 5000))
+app.use(express.static(__dirname + '/public'))
+
+app.get('/', function(request, response) {
+  response.send('Hello World!')
 })
 
-app.listen('/tmp/nginx.socket', function () {
-    fs.openSync('/tmp/app-initialized', 'w');
-    console.log('app started');
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'))
 })
