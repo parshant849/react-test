@@ -5,6 +5,9 @@ app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
+  if(req.headers['x-forwarded-proto']!=='https'){
+    res.redirect(301, 'https://www.abcdefghijkl.ml'+req.url);
+  }  
   response.send('Hello World!')
 })
 
