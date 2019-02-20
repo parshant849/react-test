@@ -1,0 +1,21 @@
+{
+  "name": "nodeRedirect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "start:prod":"forever index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "forever": "^0.15.3"
+  },
+  "engines": {
+    "node": "10.x"
+  }
+}
